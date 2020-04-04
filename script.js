@@ -6,8 +6,7 @@ let isNumber = function(n){
 let getRandomNumber = function (min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-let randomNumber = getRandomNumber(1, 100);
-console.log(randomNumber);
+
 
 // const getCounter = function() {
 //     let counter = 0;
@@ -63,26 +62,30 @@ console.log(randomNumber);
 // game();
 
 let game = function(){
-    let randomNumber = getRandomNumber(1, 100);
+    const randomNumber = getRandomNumber(1, 100);
     console.log(randomNumber);
     
     let searchNumber = function (){
-    
-    
         let number = 0;
-        number = prompt('Угадай число от 1 до 100');
-        if(number > randomNumber){
-            number = alert('Загаданное число меньше, введите еще раз');
+        number = +prompt('Угадай число от 1 до 100');
+        if((isNaN(number)) && (number > randomNumber)){
+            alert('Загаданное число меньше, введите еще раз');
+            return searchNumber();
         } else if(number < randomNumber){
-            number = alert('Загаданное число больше, введите еще раз');
-        } else if(typeof number !== 'number'){
-            number = alert('Введите число');
-            
-        } 
-   
-    // let searchRandomNumber = function(randomNumber){
-    //     return searchRandomNumber(randomNumber);
-    //     console.dir(searchRandomNumber())
-    // }
-    }
+             alert('Загаданное число больше, введите еще раз');
+            return searchNumber();
+        } else if(number == randomNumber){
+             alert('Вы угадали!');
+                  
+        } else if(number === null){
+            alert('Вы вышли из игры');
+         }  
+    
+    
+
+}
+    searchNumber();
 };
+game();
+
+
