@@ -67,25 +67,28 @@ let game = function(){
     
     let searchNumber = function (){
         let number = 0;
-        number = +prompt('Угадай число от 1 до 100');
-        if((isNaN(number)) && (number > randomNumber)){
-            alert('Загаданное число меньше, введите еще раз');
-            return searchNumber();
-        } else if(number < randomNumber){
-             alert('Загаданное число больше, введите еще раз');
-            return searchNumber();
-        } else if(number == randomNumber){
-             alert('Вы угадали!');
-                  
-        } else if(number === null){
-            alert('Вы вышли из игры');
-         }  
-    
+        number = prompt('Угадай число от 1 до 100');
+        if(isNumber(number)){
+            if(number > randomNumber){
+                alert('Загаданное число меньше, введите еще раз');
+                return searchNumber();
+            } else if(number < randomNumber){
+                alert('Загаданное число больше, введите еще раз');
+               return searchNumber();
+            } else if(number == randomNumber){
+                alert('Вы угадали!');
+            } else if(number === null){
+                alert('Вы вышли из игры!');
+            }
+        } else if(!isNumber(number) && (number !== null)){
+            number = prompt('Вы ввели не число, введите число!!!');
+        }
     
 
 }
     searchNumber();
 };
 game();
+
 
 
