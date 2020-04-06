@@ -66,8 +66,7 @@ let game = function(){
     console.log(randomNumber);
     
     let searchNumber = function (){
-        let number = 0;
-        number = prompt('Угадай число от 1 до 100');
+        let number = prompt('Угадай число от 1 до 100');
         if(isNumber(number)){
             if(number > randomNumber){
                 alert('Загаданное число меньше, введите еще раз');
@@ -77,11 +76,12 @@ let game = function(){
                return searchNumber();
             } else if(number == randomNumber){
                 alert('Вы угадали!');
-            } else if(number === null){
-                alert('Вы вышли из игры!');
-            }
+            } 
         } else if(!isNumber(number) && (number !== null)){
             number = prompt('Вы ввели не число, введите число!!!');
+            return searchNumber();
+        } else if(number === null){
+            alert('Вы вышли из игры!');
         }
     
 
